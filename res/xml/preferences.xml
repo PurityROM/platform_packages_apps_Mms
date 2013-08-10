@@ -270,10 +270,6 @@
 
     <!-- Extra Settings -->
     <PreferenceCategory android:title="@string/pref_extra_settings">
-        <CheckBoxPreference
-            android:key="direct_call_pref"
-            android:title="@string/direct_call_title"
-            android:summary="@string/direct_call_summary"/>
 
         <CheckBoxPreference
             android:key="pref_hide_avatar"

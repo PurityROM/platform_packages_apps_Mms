@@ -121,7 +121,6 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String QM_LOCKSCREEN_ENABLED     = "pref_key_qm_lockscreen";
     public static final String QM_CLOSE_ALL_ENABLED      = "pref_key_close_all";
 
-    private static final String DIRECT_CALL_PREF         = "direct_call_pref";
     public static final String MESSAGE_FONT_SIZE         = "pref_key_mms_message_font_size";
 
     // Text Area
@@ -172,8 +171,6 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     private CheckBoxPreference mEnableQmLockscreenPref;
     private CheckBoxPreference mEnableQmCloseAllPref;
 
-    private CheckBoxPreference mDirectCall;
-
     private EditTextPreference mSignature;
     private String mSignatureText;
     private CheckBoxPreference mMMSBreath;
@@ -218,7 +215,6 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         mMmsReadReportPref = findPreference("pref_key_mms_read_reports");
         mMmsLimitPref = findPreference("pref_key_mms_delete_limit");
         mClearHistoryPref = findPreference("pref_key_mms_clear_history");
-        mDirectCall = (CheckBoxPreference) findPreference("direct_call_pref");
         mEnableNotificationsPref = (CheckBoxPreference) findPreference(NOTIFICATION_ENABLED);
         mMmsAutoRetrievialPref = (CheckBoxPreference) findPreference(AUTO_RETRIEVAL);
         mEnablePrivacyModePref = (CheckBoxPreference) findPreference(PRIVACY_MODE_ENABLED);
@@ -707,26 +703,6 @@ public class MessagingPreferenceActivity extends PreferenceActivity
             PreferenceManager.getDefaultSharedPreferences(context).edit();
         editor.putBoolean(MessagingPreferenceActivity.QM_CLOSE_ALL_ENABLED, enabled);
         editor.apply();
-    }
-
-    public static boolean getGroupMMSEnabled(Context context) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean groupMMSEnabled = prefs.getBoolean(MessagingPreferenceActivity.GROUP_MMS_MODE, false);
-        return groupMMSEnabled;
-    }
-
-    public static void enableGroupMMS(boolean enabled, Context context) {
-        // Store the value of GroupMMS in SharedPreferences
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
-
-        editor.putBoolean(MessagingPreferenceActivity.GROUP_MMS_MODE, enabled);
-
-        editor.apply();
-    }
-
-    public static boolean getDirectCallEnabled(Context context) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        return prefs.getBoolean(DIRECT_CALL_PREF, false);
     }
 
     public static boolean getSplitSmsEnabled(Context context) {
